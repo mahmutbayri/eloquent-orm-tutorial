@@ -1,5 +1,12 @@
+image: tetraweb/php
+services:
+    - mysql
+
 before_script:
   - composer install
+  - docker-php-ext-enable zip && docker-php-ext-enable mbstring && docker-php-ext-enable gd && docker-php-ext-enable pdo_mysql
+  - composer self-update && composer --version
+  - composer install --dev --prefer-dist --no-interaction --quiet
 
 stages:
   - test
