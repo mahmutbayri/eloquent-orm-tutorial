@@ -1,10 +1,15 @@
 image: tetraweb/php
 services:
     - mysql
+variables:
+    MYSQL_DATABASE: effiocms_db
+    MYSQL_USER: effio_user
+    MYSQL_PASSWORD: testpassword
+    WITH_XDEBUG: "1"
 
 before_script:
   - composer install
-  - docker-php-ext-enable zip && docker-php-ext-enable mbstring && docker-php-ext-enable gd && docker-php-ext-enable pdo_mysql
+  - docker-php-ext-enable zip && docker-php-ext-enable mbstring && docker-php-ext-enable gd && docker-php-ext-enable pdo_mysql && docker-php-ext-enable zip && docker-php-ext-enable unzip
   - composer self-update && composer --version
   - composer install --dev --prefer-dist --no-interaction --quiet
 
