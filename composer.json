@@ -1,0 +1,18 @@
+{
+    "require": {
+        "illuminate/database": "5.1.*",
+        "symfony/finder": "2.7.*",
+        "fzaninotto/faker": "1.5.0",
+        "illuminate/filesystem": "5.1.*",
+        "illuminate/events": "5.1.*",
+        "symfony/var-dumper": "2.7.*"
+    },
+    "autoload" : {
+        "psr-4": {
+            "Models\\": "models/",
+            "Migration\\": "migrations/",
+            "Relations\\": "relations/",
+            "Query\\": "query/"
+        }
+    }
+}

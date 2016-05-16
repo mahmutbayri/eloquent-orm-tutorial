@@ -1,0 +1,6 @@
+//$fakerGenerator = Faker\Factory::create();
+//$factory = Illuminate\Database\Eloquent\Factory::construct($fakerGenerator,  __DIR__ . '/../factories');
+//require __DIR__ . '/../factories/ModelFactory.php';
+//$x = $factory->construct(new \Faker\Generator, __DIR__ . '/../factories');
+
+//$factory = new Illuminate\Database\Eloquent\Factory(new \Faker\Generator);
