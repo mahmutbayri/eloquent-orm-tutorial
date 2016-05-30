@@ -11,6 +11,9 @@ class SimpleTest extends PHPUnit_Framework_TestCase
         $this->assertTrue(true);
     }
 
+    /**
+     * @test
+     */
     public function it_performs_a_simple_test_2()
     {
         $this->assertTrue(true);
