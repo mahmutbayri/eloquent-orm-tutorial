@@ -1,12 +1,14 @@
 <?php
 
-require __DIR__ . '/../init.php';
+use Illuminate\Support\Str;
+use Illuminate\Filesystem\Filesystem;
 
-/** @var \Illuminate\Filesystem\Filesystem $filesystem */
-$filesystem = $ioc->make(\Illuminate\Filesystem\Filesystem::class);
+require_once __DIR__ . '/../init.php';
+
+/** @var Filesystem $filesystem */
+$filesystem = $ioc->make(Filesystem::class);
 
 $files = $filesystem->glob(__DIR__.'/../migrations/*_*.php');
-
 
 
 $files = array_map(function ($file) {
@@ -19,6 +21,5 @@ foreach ($files as $file) {
 
     $file = implode('_', array_slice(explode('_', $file), 4));
 
-    $class = $ioc->make(\Illuminate\Support\Str::studly($file))->up();
+    $class = $ioc->make(Str::studly($file))->up();
 }
-

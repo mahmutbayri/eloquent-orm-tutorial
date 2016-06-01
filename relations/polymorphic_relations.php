@@ -18,15 +18,15 @@ class User extends Model
     }
 }
 
-class Role extends Model
-{
-    public $timestamps = false;
-
-    public function permissions()
-    {
-        return $this->morphMany(Permission::class, 'permissible');
-    }
-}
+//class Role extends Model
+//{
+//    public $timestamps = false;
+//
+//    public function permissions()
+//    {
+//        return $this->morphMany(Permission::class, 'permissible');
+//    }
+//}
 
 class Permission extends Model
 {
@@ -42,7 +42,7 @@ class Permission extends Model
 ###########################
 // http://jordijoan.me/using-polymorphic-relations-laravel/
 User::truncate();
-Role::truncate();
+//Role::truncate();
 Permission::truncate();
 ###########################
 
@@ -56,17 +56,22 @@ $permisson = new Permission;
 $user->permissions()->save($permisson);
 */
 $user->permissions()->create([
-    'value' => 5
+    'value' => 'ana-sayfa-edit, kullanici-ekle',
 ]);
 
-$user->permissions->value = 988;
-
-$user->push();
+//$user->permissions->value = 988;
+//$user->push();
 
 //dump(get_class_methods($user->permissions));
 
 //$user->permissions()->updateOrCreate(['value' => 155]);
 
 dump($user->permissions()->getResults()->toArray());
+//var_dump($user->permissions()->getResults()->toArray());
 
+//$permision = Permission::find(1);
+//var_dump($permision->permissible()->getResults());
+//object(Relations\Permission)
+
+//dump(Permission::all()->toArray());
 //dump(Permission::find(1)->permissible->toArray());

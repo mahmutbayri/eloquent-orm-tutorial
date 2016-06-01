@@ -41,4 +41,5 @@ $post->title = '0 212 254 56 56';
 
 $user->posts()->save($post);
 
-dump($user->posts()->getResults());
+dump($user->posts()->getResults()->toArray());
+//var_dump($post->user()->getResults());

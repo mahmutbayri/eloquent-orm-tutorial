@@ -40,4 +40,4 @@ $phone = new Phone;
 $phone->number = '0 212 254 56 56';
 $user->phone()->save($phone);
 
-dump($user->phone()->getResults());
+dump($user->phone()->getResults()->toArray());

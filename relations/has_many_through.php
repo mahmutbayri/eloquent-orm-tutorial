@@ -9,11 +9,6 @@ class Service extends Model
 {
     public $timestamps = false;
 
-    public function users()
-    {
-        return $this->hasMany(User::class);
-    }
-
     public function posts()
     {
         return $this->hasManyThrough(Post::class, User::class);
@@ -28,21 +23,11 @@ class User extends Model
     {
         return $this->hasMany(Post::class);
     }
-
-    public function service()
-    {
-        return $this->belongsTo(Service::class);
-    }
 }
 
 class Post extends Model
 {
     public $timestamps = false;
-
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
 }
 
 ###########################
@@ -63,7 +48,9 @@ $user->save();
 
 $post = new Post;
 $post->title = 'post title';
+$post->body = 'post body';
 
 $user->posts()->save($post);
 
 dump($service->posts()->getResults()->toArray());
+//var_dump($post->user->service()->getResults()->toArray());
