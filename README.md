@@ -1,5 +1,7 @@
 # ORM Örnekleri
 
+Anlatım videosuna https://www.youtube.com/watch?v=ZT7dR9d1Uos adresinden ulaşabilirsiniz.
+
 # Gereksinimler
     - php >=7.1
 
