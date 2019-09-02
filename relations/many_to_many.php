@@ -37,7 +37,11 @@ $user->email = 'mahmut.bayri@mynetgroup.com';
 $user->save();
 
 $role = new Role;
-$role->name = '0 212 254 56 56';
+$role->name = 'admin';
+$user->roles()->save($role);
+
+$role = new Role;
+$role->name = 'editor';
 
 $user->roles()->save($role);
 

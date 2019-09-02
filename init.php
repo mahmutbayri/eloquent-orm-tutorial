@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Database\Events\QueryExecuted;
 use Illuminate\Events\Dispatcher;
 use Illuminate\Container\Container;
 use Illuminate\Database\Capsule\Manager;
@@ -32,18 +33,15 @@ $connections = [
     ],
 ];
 
-$manager->addConnection($connections['mysql']);
-
+$manager->addConnection($connections['sqlite']);
 
 ////////////////////////////////////////////////
 
-
-
-
-
-
 if ('cli' !== PHP_SAPI) {
-    $manager->connection()->listen(function ($sql, $bindings, $time) {
+    $manager->connection()->listen(function (QueryExecuted $queryExecuted) {
+
+        $sql = $queryExecuted->sql;
+        $bindings = $queryExecuted->bindings;
 
         if (
             starts_with($sql, ['truncate', 'create', 'delete', 'drop', 'alter'])
